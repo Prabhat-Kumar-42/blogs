@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.route("/").get((req, res) => {
-  return res.status(200).render("home", {
-    user: req.user,
-  });
+  return res.status(200).render("home");
 });
 
 router.route("/signup").get((req, res) => {

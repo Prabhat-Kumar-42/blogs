@@ -1,12 +1,7 @@
-require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 const staticRouter = require("./routes/staticRoutes.js");
-const userRouter = require("./routes/user.js");
-const {
-  checkForAuthenticationCookie,
-} = require("./middlewares/checkForAuthenticationCookie.js");
 
 const app = express();
 const PORT = 8000;
@@ -24,9 +19,8 @@ app.set("views", "./views/");
 //Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(checkForAuthenticationCookie("authToken"));
+
 //Routes
-app.use("/user", userRouter);
 app.use("/", staticRouter);
 
 app.listen(PORT, () => {
