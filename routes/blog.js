@@ -1,16 +1,20 @@
 const express = require("express");
-const { handleBlogCreation } = require("../controllers/blog");
+const { handleBlogReq, handleBlogCreation } = require("../controllers/blog");
 const { multerUpload } = require("../middlewares/multerConfig.js");
 const {
   checkAuthentication,
 } = require("../middlewares/checkAuthentication.js");
 const router = express.Router();
 
+router.route("/blogForm").get(checkAuthentication, (req, res) => {
+  return res.status(200).render("blogForm", {
+    user: req.user,
+  });
+});
+
 router
   .route("/:blogID?")
-  .get((req, res) => {
-    return res.status(200).render("/");
-  })
+  .get(handleBlogReq)
   .post(
     checkAuthentication,
     multerUpload.single("coverImage"),
