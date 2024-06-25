@@ -8,11 +8,11 @@ const {
 
 router
   .route("/signup")
-  .get((req, res) => res.status(302).redirect("/signup"))
+  .get((req, res) => res.status(200).render("signup"))
   .post(handleUserSignUp);
 router
   .route("/login")
-  .get((req, res) => res.status(302).redirect("/login"))
+  .get((req, res) => res.status(200).render("login"))
   .post(handleUserLogin);
 router.route("/logout").get(handleUserLogout);
 
