@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const staticRouter = require("./routes/staticRoutes.js");
 const userRouter = require("./routes/user.js");
 const blogRouter = require("./routes/blog.js");
-
+const path = require("path");
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/checkForAuthenticationCookie.js");
@@ -27,8 +27,10 @@ app.set("views", "./views/");
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("authToken"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 //Routes
-app.use("/blog", blogRouter);
+app.use("/blogs", blogRouter);
 app.use("/user", userRouter);
 app.use("/", staticRouter);
 
