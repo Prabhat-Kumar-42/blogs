@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <title>blog-form</title>
+  </head>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <form action="/blog/" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="formFile" class="form-label">CoverImage</label>
+        <input 
+          class="form-control"
+          type="file" 
+          id="coverImage" 
+          name="coverImage"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          aria-describedby="emailHelp"
+          name="title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea 
+        class="form-control"  
+        id="content"
+        name="content" 
+        style="height: 100px"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <%- include("./partials/script.ejs") %>
+  </body>
+</html>
