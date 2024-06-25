@@ -4,6 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const staticRouter = require("./routes/staticRoutes.js");
 const userRouter = require("./routes/user.js");
+const blogRouter = require("./routes/blog.js");
+
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/checkForAuthenticationCookie.js");
@@ -26,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("authToken"));
 //Routes
+app.use("/blog", blogRouter);
 app.use("/user", userRouter);
 app.use("/", staticRouter);
 
