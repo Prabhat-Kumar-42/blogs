@@ -30,7 +30,7 @@ async function handleUserLogin(req, res) {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).render("login", {
-      err: "email and password are required fields",
+      error: "email and password are required fields",
     });
   }
   try {
