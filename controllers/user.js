@@ -19,7 +19,7 @@ async function handleUserSignUp(req, res) {
       email: email,
       password: password,
     });
-    res.status(201).render("login");
+    res.status(201).redirect("/user/login");
   } catch (error) {
     console.log(error);
     req.status(500).render("server_error");
