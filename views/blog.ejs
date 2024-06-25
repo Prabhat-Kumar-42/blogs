@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("./partials/head.ejs") %>
+  <title>blog</title>
+</head>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  
+  <% if (locals.blog) { %>
+  <div class="container mt-3">
+    <img src="/<%=blog.cover_image%>" class="img-fluid" alt="/<%= blog.cover_image %>" />
+    <div>
+      <h5><%= blog.title %></h5>
+      <p><%= blog.content %></p>
+    </div>
+  </div>
+  <% } %>
+  
+  <%- include("./partials/script.ejs") %>
+</body>
+</html>
